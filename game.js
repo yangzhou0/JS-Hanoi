@@ -3,6 +3,24 @@ class Game {
     this.towers = Game.buildTowers(numberOfTowers);
   }
 
+  promptMove(){
+    this.print();
+  }
+
+  print(){
+    let towers = this.towers;
+    let num = towers.length;
+    let base = '1  2  3';
+    while(towers.some((x)=>x.length>0)) {
+      let line = ''
+      towers.forEach((tower)=>{
+        line += `${tower.shift()}  `;
+      })
+      base = line + '\n' + base;
+    }
+    console.log(base);
+  }
+
   static buildTowers(num){
     let result = [];
     let firstTower = [];
@@ -23,5 +41,5 @@ class Game {
   }
 }
 
-let g = new Game(4);
+let g = new Game(3);
 console.log(g.towers)
