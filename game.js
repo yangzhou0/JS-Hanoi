@@ -3,8 +3,13 @@ class Game {
     this.towers = Game.buildTowers(numberOfTowers);
   }
 
-  promptMove(){
+  promptMove(reader, callback){
     this.print();
+    reader.question('Which tower to move from?', function(from){
+      reader.question('Which tower to move to?', function(to){
+        callback(from,to);
+      })
+    })
   }
 
   print(){
@@ -43,4 +48,3 @@ class Game {
 }
 
 let g = new Game(3);
-console.log(g.towers)
