@@ -34,6 +34,11 @@ class Game {
   }
 
   isValidMove(startTowerIdx, endTowerIdx){
+    let fromTower = this.towers[startTowerIdx];
+    let toTower = this.towers[endTowerIdx];
+    if(_.last(fromTower) > _.last(toTower)){return false;}
+    if(_.isEmpty(startTowerIdx)) {return false;}
+    return true;
 
   }
 
@@ -58,4 +63,4 @@ class Game {
 }
 
 let g = new Game(3);
-g.promptMove(reader,(from,to)=>console.log(from,to));
+g.promptMove(reader,(from,to)=>console.log(from + ' ' + to));
