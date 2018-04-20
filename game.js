@@ -21,7 +21,7 @@ class Game {
   print(){
     let towers = this.towers;
     let num = towers.length;
-    let base = '\n1  2  3';
+    let base = '\n0  1  2';
     while(towers.some((x)=>x.length>0)) {
       let line = ''
       towers.forEach((tower)=>{
@@ -31,6 +31,10 @@ class Game {
       base = line + '\n' + base;
     }
     console.log(base);
+  }
+
+  isValidMove(startTowerIdx, endTowerIdx){
+
   }
 
   static buildTowers(num){
