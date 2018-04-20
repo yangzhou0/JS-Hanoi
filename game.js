@@ -10,11 +10,12 @@ class Game {
   print(){
     let towers = this.towers;
     let num = towers.length;
-    let base = '1  2  3';
+    let base = '\n1  2  3';
     while(towers.some((x)=>x.length>0)) {
       let line = ''
       towers.forEach((tower)=>{
-        line += `${tower.shift()}  `;
+        let item = tower[0] === undefined ? ' ' : tower.shift()
+        line += `${item}  `;
       })
       base = line + '\n' + base;
     }
