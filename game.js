@@ -1,3 +1,9 @@
+const readline = require('readline');
+const reader = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 class Game {
   constructor(numberOfTowers){
     this.towers = Game.buildTowers(numberOfTowers);
@@ -48,3 +54,4 @@ class Game {
 }
 
 let g = new Game(3);
+g.promptMove(reader,(from,to)=>console.log(from,to));
