@@ -1,9 +1,9 @@
 class Game {
   constructor(numberOfTowers){
-    this.towers = this.buildTowers(numberOfTowers);
+    this.towers = Game.buildTowers(numberOfTowers);
   }
 
-  buildTowers(num){
+  static buildTowers(num){
     let result = [];
     let firstTower = [];
     let i = num;
