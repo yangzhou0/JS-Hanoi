@@ -37,8 +37,8 @@ class Game {
   isValidMove(startTowerIdx, endTowerIdx){
     let fromTower = this.towers[startTowerIdx];
     let toTower = this.towers[endTowerIdx];
-    if(_.isEmpty(fromTower)) {console.log('invalid move'); return false;}
-    else if (_.isEmpty(toTower)) {console.log('valid move'); return true;}
+    if(_.isEmpty(fromTower)) { return false;}
+    else if (_.isEmpty(toTower)) { return true;}
     else{return _.last(fromTower) < _.last(toTower);}
   }
 
@@ -51,7 +51,7 @@ class Game {
       this.print();
       return true;
     }
-    this.print();
+    throw Error('Invalid Move');
     return false;
   }
 
@@ -60,6 +60,10 @@ class Game {
       return this.filter(tower=>tower.length === 0).length === this.length - 1;
     }
     return false;
+  }
+
+  run(completionCallback){
+    this.promptMove(reader,this.move.bind(this));//really important, remmeber to bind this.
   }
 
   static buildTowers(num){
@@ -91,4 +95,4 @@ let g = new Game(3);
 // g.move(1,2);
 // g.move(0,1);
 // g.move(1,2);
-console.log(g.isWon())
+g.run();
