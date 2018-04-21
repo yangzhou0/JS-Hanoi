@@ -1,18 +1,19 @@
 var _ = require('underscore');
 
 
+
 class Game {
   constructor(numberOfTowers){
     this.towers = Game.buildTowers(numberOfTowers);
   }
 
-  promptMove(reader, callback){
+  promptMove(reader,callback){
     this.print();
     reader.question('Which tower to move from?', function(from){
       reader.question('Which tower to move to?', function(to){
         callback(from,to);
-      })
-    })
+      });
+    });
   }
 
   print(){
@@ -64,7 +65,7 @@ class Game {
         console.log('You won!');
         completionCallback();
       }
-      else{this.run(completionCallback)};
+      else{this.run(reader,completionCallback)};
     });
   }
 
