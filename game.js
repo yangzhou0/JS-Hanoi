@@ -1,3 +1,4 @@
+var _ = require('underscore');
 const readline = require('readline');
 const reader = readline.createInterface({
   input: process.stdin,
@@ -36,10 +37,9 @@ class Game {
   isValidMove(startTowerIdx, endTowerIdx){
     let fromTower = this.towers[startTowerIdx];
     let toTower = this.towers[endTowerIdx];
-    if(_.last(fromTower) > _.last(toTower)){return false;}
-    if(_.isEmpty(startTowerIdx)) {return false;}
-    return true;
-
+    if(_.isEmpty(fromTower)) {return false;}
+    else if (_.isEmpty(toTower)) {return true;}
+    else{return _.last(fromTower) < _.last(toTower);}
   }
 
   static buildTowers(num){
@@ -63,4 +63,8 @@ class Game {
 }
 
 let g = new Game(3);
-g.promptMove(reader,(from,to)=>console.log(from + ' ' + to));
+// g.promptMove(reader,(from,to)=>console.log(from + ' ' + to)); // test for promptMove
+//tests for isValidMove
+console.log(g.isValidMove(1,2));
+console.log(g.isValidMove(2,1));
+console.log(g.isValidMove(0,1));
