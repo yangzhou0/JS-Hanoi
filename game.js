@@ -56,7 +56,7 @@ class Game {
 
   isWon(){
     if (this.towers[0].length === 0){
-      return this.filter(tower=>tower.length === 0).length === this.length - 1;
+      return this.towers.filter(tower=>tower.length === 0).length === this.length - 1;
     }
     return false;
   }
@@ -70,8 +70,6 @@ class Game {
       }
       this.run(completionCallback);
     });
-
-
   }
 
   static buildTowers(num){
