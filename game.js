@@ -48,10 +48,9 @@ class Game {
     let toTower = this.towers[endTowerIdx];
     if(this.isValidMove(startTowerIdx,endTowerIdx)) {
       toTower.push(fromTower.pop());
-      this.print();
       return true;
     }
-    throw Error('Invalid Move');
+    console.log('Invalid Move');
     return false;
   }
 
@@ -63,7 +62,16 @@ class Game {
   }
 
   run(completionCallback){
-    this.promptMove(reader,this.move.bind(this));//really important, remmeber to bind this.
+    this.promptMove(reader,(from,to)=>{
+      this.move.bind(this)(from,to);//really important, remmeber to bind this.
+      if (this.isWon()){
+        completionCallback();
+        return;
+      }
+      this.run(completionCallback);
+    });
+
+
   }
 
   static buildTowers(num){
