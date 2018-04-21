@@ -1,9 +1,5 @@
 var _ = require('underscore');
-const readline = require('readline');
-const reader = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+
 
 class Game {
   constructor(numberOfTowers){
@@ -61,7 +57,7 @@ class Game {
     return false;
   }
 
-  run(completionCallback){
+  run(reader,completionCallback){
     this.promptMove(reader,(from,to)=>{
       this.move(from,to);//really important, remmeber to bind this.
       if (this.isWon()){
@@ -93,7 +89,7 @@ class Game {
   }
 }
 
-let g = new Game(3);
+module.exports = Game;
 // g.promptMove(reader,(from,to)=>console.log(from + ' ' + to)); // test for promptMove
 //tests for isValidMove
 // console.log(g.isValidMove(1,2));
@@ -102,8 +98,8 @@ let g = new Game(3);
 // g.move(1,2);
 // g.move(0,1);
 // g.move(1,2);
-g.run(
-  ()=>{
-    reader.close();
-  }
-);
+// g.run(
+//   ()=>{
+//     reader.close();
+//   }
+// );
