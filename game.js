@@ -63,14 +63,14 @@ class Game {
 
   run(completionCallback){
     this.promptMove(reader,(from,to)=>{
-      this.move.bind(this)(from,to);//really important, remmeber to bind this.
+      this.move(from,to);//really important, remmeber to bind this.
       if (this.isWon()){
         completionCallback();
-        return;
       }
-      this.run(completionCallback);
+      else{this.run(completionCallback)};
     });
   }
+
 
   static buildTowers(num){
     let result = [];
@@ -101,4 +101,9 @@ let g = new Game(3);
 // g.move(1,2);
 // g.move(0,1);
 // g.move(1,2);
-g.run();
+g.run(
+  ()=>{
+    console.log('You won');
+    reader.close();
+  }
+);
