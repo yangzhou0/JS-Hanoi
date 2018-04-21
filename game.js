@@ -55,6 +55,13 @@ class Game {
     return false;
   }
 
+  isWon(){
+    if (this.towers[0].length === 0){
+      return this.filter(tower=>tower.length === 0).length === this.length - 1;
+    }
+    return false;
+  }
+
   static buildTowers(num){
     let result = [];
     let firstTower = [];
@@ -82,5 +89,6 @@ let g = new Game(3);
 // console.log(g.isValidMove(2,1));
 // console.log(g.isValidMove(0,1));
 // g.move(1,2);
-g.move(0,1);
-g.move(1,2);
+// g.move(0,1);
+// g.move(1,2);
+console.log(g.isWon())
