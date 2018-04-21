@@ -65,6 +65,7 @@ class Game {
     this.promptMove(reader,(from,to)=>{
       this.move(from,to);//really important, remmeber to bind this.
       if (this.isWon()){
+        console.log('You won!');
         completionCallback();
       }
       else{this.run(completionCallback)};
@@ -103,7 +104,6 @@ let g = new Game(3);
 // g.move(1,2);
 g.run(
   ()=>{
-    console.log('You won');
     reader.close();
   }
 );
