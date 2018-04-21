@@ -56,7 +56,7 @@ class Game {
 
   isWon(){
     if (this.towers[0].length === 0){
-      return this.towers.filter(tower=>tower.length === 0).length === this.length - 1;
+      return this.towers.filter(tower=>tower.length === 0).length === this.towers.length - 1;
     }
     return false;
   }
