@@ -13,7 +13,7 @@ function completion (){
       g = new Game(3);
       g.run(reader,completion);
     }
-    else {
+    else  {
       console.log('Bye');
       reader.close()
     }
